@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a,b,i;
+    cout<<"enter the number: ";
+    cin>>a;
+    cout<<"enter upto which multiplication need to be performed:";
+    cin>>b;
+    for(i=1;i<=b;i++)
+    {
+        cout<<a<<"*"<<i<<"="<<a*i<<"\n";
+    }
+}
