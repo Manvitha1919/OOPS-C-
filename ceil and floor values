@@ -1,0 +1,10 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    float a=4.5;
+    cout<<"ceil value of "<< a <<" is "<<ceil(a)<<endl;
+    cout<<"floor value of "<< a <<" is "<<floor(a)<<endl;
+    return 0;
+}￼Enter
