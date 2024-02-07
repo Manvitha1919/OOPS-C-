@@ -1,0 +1,19 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    float a,b;
+    cout << "enter 1st number: ";
+    cin >> a;
+    cout << "enter 2nd number: ";
+    cin >> b;
+    float sum=a+b;
+    float sub=a-b;
+    float mul=a*b;
+    float div=b/a;
+    cout << "Addition: " << sum;
+    cout << "\nSutraction: "<< sub;
+    cout << "\nMultiplication: "<< mul;
+    cout << "\nDivision: "<< div;
+}￼Enter
