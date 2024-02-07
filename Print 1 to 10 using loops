@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int i,a,b;
+    cout<<"enter starting value: ";
+    cin>>a;
+    cout<<"enter ending value: ";
+    cin>>b;
+    cout<< "Numbers between "<<a<<" and "<<b<<" are: ";
+    for(i=a;i<=b;i++)
+    {
+        cout<<"\n"<<i;
+    }
+}
