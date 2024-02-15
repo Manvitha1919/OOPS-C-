@@ -1,0 +1,30 @@
+#include <iostream>
+
+void findMinMax(int arr[], int size, int& min, int& max) {
+    if (size <= 0) {
+        std::cerr << "Array is empty!" << std::endl;
+        return;
+    }
+
+    min = max = arr[0];
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] < min) {
+            min = arr[i]; // Update min if current element is smaller
+        } else if (arr[i] > max) {
+            max = arr[i]; // Update max if current element is larger
+        }
+    }
+}
+
+int main() {
+    int arr[] = {5, 8, 3, 2, 9, 4, 7, 1, 6};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int min, max;
+
+    findMinMax(arr, size, min, max);
+
+    std::cout << "Minimum element: " << min << std::endl;
+    std::cout << "Maximum element: " << max << std::endl;
+
+    return 0;
+}
