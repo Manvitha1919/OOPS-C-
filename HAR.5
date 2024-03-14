@@ -1,0 +1,126 @@
+#include <iostream>
+#include <stack>
+#include <queue>
+#include <unordered_map>
+#include <cctype>
+#include <cmath>
+using namespace std;
+
+// Operator precedence map
+unordered_map<char, int> precedence = {
+    {'+', 1},
+    {'-', 1},
+    {'*', 2},
+    {'/', 2},
+    {'^', 3} // exponentiation has the highest precedence
+};
+
+// Function to check if a character is an operator
+bool isOperator(char c) {
+    return precedence.find(c) != precedence.end();
+}
+
+// Function to convert infix expression to postfix expression
+queue<char> infixToPostfix(const string& expression) {
+    queue<char> postfix;
+    stack<char> operators;
+
+    for (char c : expression) {
+        if (isdigit(c) || isalpha(c)) {
+            postfix.push(c); // operand, add to postfix
+        } else if (c == '(') {
+            operators.push(c); // left parenthesis, push to stack
+        } else if (c == ')') {
+            // right parenthesis, pop operators from stack and add to postfix until '(' is encountered
+            while (!operators.empty() && operators.top() != '(') {
+                postfix.push(operators.top());
+                operators.pop();
+            }
+            operators.pop(); // remove '(' from stack
+        } else if (isOperator(c)) {
+            // operator, pop operators with higher or equal precedence from stack and add to postfix
+            while (!operators.empty() && operators.top() != '(' &&
+                   precedence[c] <= precedence[operators.top()]) {
+                postfix.push(operators.top());
+                operators.pop();
+            }
+            operators.push(c); // push current operator to stack
+        }
+    }
+
+    // Add remaining operators from stack to postfix
+    while (!operators.empty()) {
+        postfix.push(operators.top());
+        operators.pop();
+    }
+
+    return postfix;
+}
+
+// Function to evaluate postfix expression
+double evaluatePostfix(queue<char>& postfix) {
+    stack<double> operands;
+
+    while (!postfix.empty()) {
+        char token = postfix.front();
+        postfix.pop();
+
+        if (isdigit(token)) {
+            operands.push(token - '0'); // convert char digit to integer and push to stack
+        } else if (isalpha(token)) {
+            cout << "Enter value for variable " << token << ": ";
+            double value;
+            cin >> value;
+            operands.push(value);
+        } else if (isOperator(token)) {
+            double operand2 = operands.top();
+            operands.pop();
+            double operand1 = operands.top();
+            operands.pop();
+
+            // perform operation based on operator
+            switch (token) {
+                case '+':
+                    operands.push(operand1 + operand2);
+                    break;
+                case '-':
+                    operands.push(operand1 - operand2);
+                    break;
+                case '*':
+                    operands.push(operand1 * operand2);
+                    break;
+                case '/':
+                    if (operand2 == 0) {
+                        cerr << "Error: Division by zero!" << endl;
+                        return NAN; // return NaN for division by zero
+                    }
+                    operands.push(operand1 / operand2);
+                    break;
+                case '^':
+                    operands.push(pow(operand1, operand2));
+                    break;
+            }
+        }
+    }
+
+    return operands.top();
+}
+
+int main() {
+    string expression;
+    cout << "Enter a mathematical expression: ";
+    getline(cin, expression);
+
+    // Convert infix expression to postfix expression
+    queue<char> postfix = infixToPostfix(expression);
+
+    // Evaluate postfix expression
+    double result = evaluatePostfix(postfix);
+
+    // Display result
+    if (!isnan(result)) {
+        cout << "Result: " << result << endl;
+    }
+
+    return 0;
+}
