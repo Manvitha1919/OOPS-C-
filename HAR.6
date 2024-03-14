@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+// Template function to find the maximum element in an array
+template<typename T>
+T findMax(const T arr[], int size) {
+    T maxElement = arr[0];
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > maxElement) {
+            maxElement = arr[i];
+        }
+    }
+    return maxElement;
+}
+
+int main() {
+    // Test with integer array
+    int intArray[] = {3, 7, 2, 9, 5};
+    int intMax = findMax(intArray, 5);
+    cout << "Maximum element in integer array: " << intMax << endl;
+
+    // Test with float array
+    float floatArray[] = {3.5, 7.2, 2.9, 9.1, 5.6};
+    float floatMax = findMax(floatArray, 5);
+    cout << "Maximum element in float array: " << floatMax << endl;
+
+    // Test with double array
+    double doubleArray[] = {3.5, 7.2, 2.9, 9.1, 5.6};
+    double doubleMax = findMax(doubleArray, 5);
+    cout << "Maximum element in double array: " << doubleMax << endl;
+
+    return 0;
+}
