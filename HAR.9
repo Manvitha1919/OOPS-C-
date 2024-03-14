@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+typedef void (*CallbackFunc)(int);
+void processCallback(int value, CallbackFunc callback) {
+    cout << "Processing callback with value: " << value << endl;
+    callback(value);
+}
+void callbackFunction(int value) {
+    cout << "Callback function called with value: " << value << endl;
+}
+
+int main() {
+  
+    processCallback(42, callbackFunction);
+
+    return 0;
+}
