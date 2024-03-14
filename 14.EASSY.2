@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+// Function prototype for addNumbers
+int addNumbers(int num1, int num2);
+
+int main() {
+    int a, b;
+    cout << "Enter the first number: ";
+    cin >> a;
+    cout << "Enter the second number: ";
+    cin >> b;
+
+    // Calling the addNumbers function
+    int sum = addNumbers(a, b);
+    cout << "Sum: " << sum << endl;
+
+    return 0;
+}
+
+// Function definition for addNumbers
+int addNumbers(int num1, int num2) {
+    return num1 + num2;
+}
