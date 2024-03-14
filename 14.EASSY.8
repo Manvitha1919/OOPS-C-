@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+// Class Rectangle
+class Rectangle {
+private:
+    double length;
+    double width;
+
+public:
+    // Constructor
+    Rectangle() {
+        length = 0.0;
+        width = 0.0;
+    }
+
+    // Function to set length
+    void setLength(double len) {
+        length = len;
+    }
+
+    // Function to get length
+    double getLength() const {
+        return length;
+    }
+
+    // Function to set width
+    void setWidth(double wid) {
+        width = wid;
+    }
+
+    // Function to get width
+    double getWidth() const {
+        return width;
+    }
+};
+
+int main() {
+    // Create an object of Rectangle class
+    Rectangle rect;
+
+    // Set length and width using member functions
+    rect.setLength(5.0);
+    rect.setWidth(3.0);
+
+    // Get length and width using member functions
+    cout << "Length: " << rect.getLength() << endl;
+    cout << "Width: " << rect.getWidth() << endl;
+
+    return 0;
+}
