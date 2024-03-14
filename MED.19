@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+class Complex {
+private:
+    double real;
+    double imag;
+public:
+    Complex(double real, double imag) : real(real), imag(imag) {}
+    Complex operator+(const Complex& other) const {
+        return Complex(real + other.real, imag + other.imag);
+    }
+    Complex operator-(const Complex& other) const {
+        return Complex(real - other.real, imag - other.imag);
+    }
+    void display() const {
+        cout << "(" << real << " + " << imag << "i)" << endl;
+    }
+};
+
+int main() {
+    Complex num1(3.0, 2.0);
+    Complex num2(1.5, 4.0);
+    cout << "Addition result: ";
+    Complex sum = num1 + num2;
+    sum.display();
+    cout << "Subtraction result: ";
+    Complex diff = num1 - num2;
+    diff.display();
+
+    return 0;
+}
