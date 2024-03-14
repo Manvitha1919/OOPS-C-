@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+// Function that returns a reference to an integer variable and modifies its value
+int& modifyValue(int& x) {
+    // Modify the value of x
+    x *= 2;
+    // Return a reference to x
+    return x;
+}
+
+int main() {
+    int value = 5;
+
+    cout << "Before modification: value = " << value << endl;
+
+    // Call modifyValue function to update the value of 'value'
+    modifyValue(value);
+
+    cout << "After modification: value = " << value << endl;
+
+    return 0;
+}
