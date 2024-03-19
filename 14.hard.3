@@ -1,0 +1,121 @@
+#include <iostream>
+
+class Matrix {
+private:
+    int rows;
+    int cols;
+    int **data;
+
+public:
+    // Constructor
+    Matrix(int r, int c) : rows(r), cols(c) {
+        // Dynamically allocate memory for the matrix array
+        data = new int*[rows];
+        for (int i = 0; i < rows; ++i) {
+            data[i] = new int[cols];
+        }
+    }
+
+    // Destructor
+    ~Matrix() {
+        // Deallocate memory for the matrix array
+        for (int i = 0; i < rows; ++i) {
+            delete[] data[i];
+        }
+        delete[] data;
+    }
+
+    // Overloaded addition operator
+    Matrix operator+(const Matrix& other) const {
+        Matrix result(rows, cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                result.data[i][j] = data[i][j] + other.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Overloaded subtraction operator
+    Matrix operator-(const Matrix& other) const {
+        Matrix result(rows, cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                result.data[i][j] = data[i][j] - other.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Overloaded multiplication operator
+    Matrix operator*(const Matrix& other) const {
+        Matrix result(rows, other.cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < other.cols; ++j) {
+                result.data[i][j] = 0;
+                for (int k = 0; k < cols; ++k) {
+                    result.data[i][j] += data[i][k] * other.data[k][j];
+                }
+            }
+        }
+        return result;
+    }
+
+    // Function to input matrix elements
+    void inputMatrix() {
+        std::cout << "Enter matrix elements:" << std::endl;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                std::cout << "Element [" << i << "][" << j << "]: ";
+                std::cin >> data[i][j];
+            }
+        }
+    }
+
+    // Function to display matrix
+    void displayMatrix() const {
+        std::cout << "Matrix:" << std::endl;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                std::cout << data[i][j] << "\t";
+            }
+            std::cout << std::endl;
+        }
+    }
+};
+
+int main() {
+    int rows, cols;
+    std::cout << "Enter number of rows for Matrix 1: ";
+    std::cin >> rows;
+    std::cout << "Enter number of columns for Matrix 1: ";
+    std::cin >> cols;
+
+    Matrix matrix1(rows, cols);
+    matrix1.inputMatrix();
+
+    std::cout << "Enter number of rows for Matrix 2: ";
+    std::cin >> rows;
+    std::cout << "Enter number of columns for Matrix 2: ";
+    std::cin >> cols;
+
+    Matrix matrix2(rows, cols);
+    matrix2.inputMatrix();
+
+    // Addition
+    Matrix sum = matrix1 + matrix2;
+    std::cout << "Matrix Sum:" << std::endl;
+    sum.displayMatrix();
+
+    // Subtraction
+    Matrix diff = matrix1 - matrix2;
+    std::cout << "Matrix Difference:" << std::endl;
+    diff.displayMatrix();
+
+    // Multiplication
+    Matrix product = matrix1 * matrix2;
+    std::cout << "Matrix Product:" << std::endl;
+    product.displayMatrix();
+
+    return 0;
+}
