@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+
+// Function prototype with default argument
+void printMessage(std::string message = "Hello");
+
+int main() {
+    // Call the function without passing any argument
+    printMessage();
+    return 0;
+}
+
+// Function definition with default argument
+void printMessage(std::string message) {
+    std::cout << message << std::endl;
+}
