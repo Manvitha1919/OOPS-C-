@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+
+class Car {
+public:
+    // Constructor initializing model to "Unknown"
+    Car() : model("Unknown") {}
+
+    // Parameterized constructor to set model based on user input
+    Car(const std::string& carModel) : model(carModel) {}
+
+    // Method to get the model of the car
+    std::string getModel() const {
+        return model;
+    }
+
+private:
+    std::string model;
+};
+
+int main() {
+    // Get the model of the car from the user
+    std::string userCarModel;
+    std::cout << "Enter the model of the car: ";
+    std::getline(std::cin, userCarModel);
+
+    // Create an object of the Car class with the specific model provided by the user
+    Car myCar(userCarModel);
+
+    // Display the model of the car
+    std::cout << "Model of the car: " << myCar.getModel() << std::endl;
+
+    return 0;
+}
