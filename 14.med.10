@@ -1,0 +1,75 @@
+#include <iostream>
+
+class Rectangle {
+private:
+    double length;
+    double width;
+    int coordinates[2]; // Array to store (x, y) coordinates
+    static int totalRectangles; // Static member to keep track of total rectangles
+
+public:
+    // Constructor
+    Rectangle() {
+        length = 0.0;
+        width = 0.0;
+        coordinates[0] = 0; // Initialize x-coordinate
+        coordinates[1] = 0; // Initialize y-coordinate
+        totalRectangles++; // Increment total rectangles count
+    }
+
+    // Destructor
+    ~Rectangle() {
+        totalRectangles--; // Decrement total rectangles count
+    }
+
+    // Member function to set length
+    void setLength(double len) {
+        length = len;
+    }
+
+    // Member function to set width
+    void setWidth(double wid) {
+        width = wid;
+    }
+
+    // Member function to get length
+    double getLength() const {
+        return length;
+    }
+
+    // Member function to get width
+    double getWidth() const {
+        return width;
+    }
+
+    // Member function to set coordinates
+    void setCoordinates(int x, int y) {
+        coordinates[0] = x;
+        coordinates[1] = y;
+    }
+
+    // Member function to get coordinates
+    void getCoordinates(int& x, int& y) const {
+        x = coordinates[0];
+        y = coordinates[1];
+    }
+
+    // Static member function to count total rectangles
+    static int countRectangles() {
+        return totalRectangles;
+    }
+};
+
+// Initializing static member outside the class definition
+int Rectangle::totalRectangles = 0;
+
+int main() {
+    std::cout << "Total rectangles: " << Rectangle::countRectangles() << std::endl;
+
+    Rectangle rect1;
+    Rectangle rect2;
+
+    std::cout << "Total rectangles: " << Rectangle::countRectangles() << std::endl;
+
+    return 0;
+}
