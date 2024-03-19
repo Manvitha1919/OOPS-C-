@@ -1,0 +1,68 @@
+#include <iostream>
+
+class Rectangle {
+private:
+    double length;
+    double width;
+    int coordinates[2]; // Array to store (x, y) coordinates
+
+public:
+    // Constructor
+    Rectangle() {
+        length = 0.0;
+        width = 0.0;
+        coordinates[0] = 0; // Initialize x-coordinate
+        coordinates[1] = 0; // Initialize y-coordinate
+    }
+
+    // Member function to set length
+    void setLength(double len) {
+        length = len;
+    }
+
+    // Member function to set width
+    void setWidth(double wid) {
+        width = wid;
+    }
+
+    // Member function to get length
+    double getLength() const {
+        return length;
+    }
+
+    // Member function to get width
+    double getWidth() const {
+        return width;
+    }
+
+    // Member function to set coordinates
+    void setCoordinates(int x, int y) {
+        coordinates[0] = x;
+        coordinates[1] = y;
+    }
+
+    // Member function to get coordinates
+    void getCoordinates(int& x, int& y) const {
+        x = coordinates[0];
+        y = coordinates[1];
+    }
+};
+
+int main() {
+    Rectangle rect;
+
+    // Set length, width, and coordinates of the rectangle
+    rect.setLength(5.0);
+    rect.setWidth(3.0);
+    rect.setCoordinates(2, 3);
+
+    // Get and print the length, width, and coordinates of the rectangle
+    std::cout << "Length: " << rect.getLength() << std::endl;
+    std::cout << "Width: " << rect.getWidth() << std::endl;
+
+    int x, y;
+    rect.getCoordinates(x, y);
+    std::cout << "Coordinates: (" << x << ", " << y << ")" << std::endl;
+
+    return 0;
+}
