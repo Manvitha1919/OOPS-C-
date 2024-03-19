@@ -1,0 +1,50 @@
+#include <iostream>
+
+template<typename T1, typename T2>
+class Pair {
+public:
+    Pair(const T1& first, const T2& second) : first(first), second(second) {}
+
+    // Friend function to swap values of two Pair objects
+    friend void swap(Pair& pair1, Pair& pair2) {
+        using std::swap;
+        swap(pair1.first, pair2.first);
+        swap(pair1.second, pair2.second);
+    }
+
+    T1 first;
+    T2 second;
+};
+
+// Template specialization for swapping pairs of int
+template<>
+void swap(Pair<int, int>& pair1, Pair<int, int>& pair2) {
+    using std::swap;
+    swap(pair1.first, pair2.first);
+    swap(pair1.second, pair2.second);
+}
+
+// Template specialization for swapping pairs of double
+template<>
+void swap(Pair<double, double>& pair1, Pair<double, double>& pair2) {
+    using std::swap;
+    swap(pair1.first, pair2.first);
+    swap(pair1.second, pair2.second);
+}
+
+int main() {
+    Pair<int, double> pair1(10, 3.14);
+    Pair<int, double> pair2(20, 6.28);
+
+    std::cout << "Before swapping:\n";
+    std::cout << "Pair 1: (" << pair1.first << ", " << pair1.second << ")\n";
+    std::cout << "Pair 2: (" << pair2.first << ", " << pair2.second << ")\n";
+
+    swap(pair1, pair2);
+
+    std::cout << "\nAfter swapping:\n";
+    std::cout << "Pair 1: (" << pair1.first << ", " << pair1.second << ")\n";
+    std::cout << "Pair 2: (" << pair2.first << ", " << pair2.second << ")\n";
+
+    return 0;
+}
