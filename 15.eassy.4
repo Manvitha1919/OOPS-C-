@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+class Person {
+public:
+    // Constructor
+    Person(const std::string& n = "", int a = 0) : name(n), age(a) {}
+
+    // Copy constructor
+    Person(const Person& other) : name(other.name), age(other.age) {}
+
+    // Method to display person's information
+    void display() const {
+        std::cout << "Name: " << name << ", Age: " << age << std::endl;
+    }
+
+private:
+    std::string name;
+    int age;
+};
+
+int main() {
+    // Create a Person object
+    Person person1("Alice", 30);
+
+    // Display person1's information
+    std::cout << "Original object:\n";
+    person1.display();
+
+    // Create a new Person object using the copy constructor
+    Person person2 = person1;
+
+    // Display person2's information
+    std::cout << "\nCopied object:\n";
+    person2.display();
+
+    return 0;
+}
