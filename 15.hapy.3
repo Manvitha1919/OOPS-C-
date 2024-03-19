@@ -1,0 +1,38 @@
+#include <iostream>
+
+class Rectangle {
+public:
+    // Constructor with default values for length and width
+    Rectangle(double len = 1.0, double wid = 1.0) : length(len), width(wid) {}
+
+    // Constructor with parameters to set length and width
+    Rectangle(double len, double wid) : length(len), width(wid) {}
+
+    // Method to get the dimensions of the rectangle
+    void getDimensions(double& len, double& wid) const {
+        len = length;
+        wid = width;
+    }
+
+private:
+    double length;
+    double width;
+};
+
+int main() {
+    // Create an object of the Rectangle class using the default constructor
+    Rectangle defaultRectangle;
+
+    // Create an object of the Rectangle class using the parameterized constructor
+    Rectangle customRectangle(5.0, 3.0);
+
+    // Display dimensions of the rectangles
+    double len1, wid1, len2, wid2;
+    defaultRectangle.getDimensions(len1, wid1);
+    customRectangle.getDimensions(len2, wid2);
+
+    std::cout << "Dimensions of the default rectangle: Length = " << len1 << ", Width = " << wid1 << std::endl;
+    std::cout << "Dimensions of the custom rectangle: Length = " << len2 << ", Width = " << wid2 << std::endl;
+
+    return 0;
+}
