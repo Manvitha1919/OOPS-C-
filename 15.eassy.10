@@ -1,0 +1,36 @@
+#include <iostream>
+
+class Number {
+public:
+    // Constructor
+    Number(int val) : value(val) {}
+
+    // Overloaded unary minus operator
+    Number operator-() const {
+        return Number(-value);
+    }
+
+    // Method to get the value of the Number object
+    int getValue() const {
+        return value;
+    }
+
+private:
+    int value;
+};
+
+int main() {
+    // Create a Number object with a positive value
+    Number num1(10);
+
+    // Display the original value
+    std::cout << "Original value: " << num1.getValue() << std::endl;
+
+    // Use unary minus operator to negate the value
+    Number negatedNum = -num1;
+
+    // Display the negated value
+    std::cout << "Negated value: " << negatedNum.getValue() << std::endl;
+
+    return 0;
+}
