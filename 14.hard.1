@@ -1,0 +1,68 @@
+#include <iostream>
+#include <cmath>
+
+// Function prototypes
+double area(double length, double width);
+double perimeter(double length, double width);
+
+double area(double radius);
+double perimeter(double radius);
+
+double area(double base, double height);
+double perimeter(double side1, double side2, double side3);
+
+int main() {
+    // Rectangle
+    double rectLength = 5.0;
+    double rectWidth = 3.0;
+    std::cout << "Rectangle Area: " << area(rectLength, rectWidth) << std::endl;
+    std::cout << "Rectangle Perimeter: " << perimeter(rectLength, rectWidth) << std::endl;
+
+    // Circle
+    double circleRadius = 4.0;
+    std::cout << "Circle Area: " << area(circleRadius) << std::endl;
+    std::cout << "Circle Perimeter: " << perimeter(circleRadius) << std::endl;
+
+    // Triangle
+    double triBase = 6.0;
+    double triHeight = 4.0;
+    double triSide1 = 3.0;
+    double triSide2 = 4.0;
+    double triSide3 = 5.0;
+    std::cout << "Triangle Area: " << area(triBase, triHeight) << std::endl;
+    std::cout << "Triangle Perimeter: " << perimeter(triSide1, triSide2, triSide3) << std::endl;
+
+    return 0;
+}
+
+// Rectangle area
+double area(double length, double width) {
+    return length * width;
+}
+
+// Rectangle perimeter
+double perimeter(double length, double width) {
+    return 2 * (length + width);
+}
+
+// Circle area
+double area(double radius) {
+    const double PI = 3.14159265359;
+    return PI * radius * radius;
+}
+
+// Circle perimeter
+double perimeter(double radius) {
+    const double PI = 3.14159265359;
+    return 2 * PI * radius;
+}
+
+// Triangle area
+double area(double base, double height) {
+    return 0.5 * base * height;
+}
+
+// Triangle perimeter
+double perimeter(double side1, double side2, double side3) {
+    return side1 + side2 + side3;
+}
