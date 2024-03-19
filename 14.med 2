@@ -1,0 +1,21 @@
+#include <iostream>
+
+// Function prototype for addNumbers
+int addNumbers(int num1, int num2);
+
+int main() {
+    int a = 5;
+    int b = 7;
+    
+    // Calling the addNumbers function and storing the result in a variable
+    int sum = addNumbers(a, b);
+    
+    std::cout << "The sum of " << a << " and " << b << " is: " << sum << std::endl;
+
+    return 0;
+}
+
+// Function definition for addNumbers
+int addNumbers(int num1, int num2) {
+    return num1 + num2;
+}
