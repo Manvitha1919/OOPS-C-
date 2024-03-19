@@ -1,0 +1,25 @@
+#include <iostream>
+
+// Function prototype
+int& modifyValue(int &x);
+
+int main() {
+    int number = 5;
+
+    std::cout << "Before modification: " << number << std::endl;
+
+    // Call the function to modify the value of 'number'
+    modifyValue(number) = 10;
+
+    std::cout << "After modification: " << number << std::endl;
+
+    return 0;
+}
+
+// Function to return a reference to an integer variable and modify its value
+int& modifyValue(int &x) {
+    // Modify the value of the variable
+    x *= 2;
+    // Return a reference to the modified variable
+    return x;
+}
