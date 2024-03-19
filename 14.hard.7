@@ -1,0 +1,42 @@
+#include <iostream>
+#include <utility> // For std::pair
+
+// Function to find both maximum and minimum elements in an array
+std::pair<int, int>& findMaxMin(const int arr[], int size) {
+    if (size == 0) {
+        // If the array is empty, return a reference to a pair of 0s
+        static std::pair<int, int> empty_result(0, 0);
+        return empty_result;
+    }
+
+    // Initialize max and min with the first element of the array
+    int max = arr[0];
+    int min = arr[0];
+
+    // Iterate through the array to find max and min
+    for (int i = 1; i < size; ++i) {
+        if (arr[i] > max) {
+            max = arr[i];
+        } else if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    // Create a pair object containing the maximum and minimum values
+    static std::pair<int, int> result(max, min);
+    return result;
+}
+
+int main() {
+    int arr[] = {3, 1, 7, 2, 8, 4, 6, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    // Call the function to find maximum and minimum values
+    std::pair<int, int>& result_pair = findMaxMin(arr, size);
+
+    // Print the maximum and minimum values
+    std::cout << "Maximum value: " << result_pair.first << std::endl;
+    std::cout << "Minimum value: " << result_pair.second << std::endl;
+
+    return 0;
+}
