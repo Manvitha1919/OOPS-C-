@@ -1,0 +1,41 @@
+#include <iostream>
+
+class DynamicArray {
+public:
+    // Constructor dynamically allocating an array of specified size
+    DynamicArray(int size) : size(size) {
+        array = new int[size];
+        // Initialize array elements to 0 (optional)
+        for (int i = 0; i < size; ++i) {
+            array[i] = 0;
+        }
+    }
+
+    // Destructor to deallocate memory
+    ~DynamicArray() {
+        delete[] array;
+    }
+
+    // Method to display elements of the array
+    void display() const {
+        std::cout << "Elements of the array:\n";
+        for (int i = 0; i < size; ++i) {
+            std::cout << array[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+private:
+    int* array;
+    int size;
+};
+
+int main() {
+    // Create an object of the DynamicArray class with a specified size
+    DynamicArray dynamicArray(5);
+
+    // Display elements of the array
+    dynamicArray.display();
+
+    return 0;
+}
