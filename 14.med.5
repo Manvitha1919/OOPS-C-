@@ -1,0 +1,19 @@
+#include <iostream>
+
+// Inline function to calculate the square of a number
+inline int square(int x) {
+    return x * x;
+}
+
+int main() {
+    int number;
+
+    std::cout << "Enter an integer: ";
+    std::cin >> number;
+
+    int squaredNumber = square(number);
+
+    std::cout << "Square of " << number << " is: " << squaredNumber << std::endl;
+
+    return 0;
+}
