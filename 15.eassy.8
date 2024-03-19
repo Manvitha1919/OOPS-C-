@@ -1,0 +1,54 @@
+#include <iostream>
+
+class Rectangle {
+public:
+    // Constructors
+    Rectangle(double len = 1.0, double wid = 1.0) : length(len), width(wid) {}
+    Rectangle(const Rectangle& other) : length(other.length), width(other.width) {}
+
+    // Method to calculate area of the rectangle
+    double area() const {
+        return length * width;
+    }
+
+    // Overloading addition operator to add areas of two rectangles
+    Rectangle operator+(const Rectangle& other) const {
+        double totalLength = length + other.length;
+        double totalWidth = width + other.width;
+        return Rectangle(totalLength, totalWidth);
+    }
+
+    // Method to display the dimensions of the rectangle
+    void display() const {
+        std::cout << "Length: " << length << ", Width: " << width << std::endl;
+    }
+
+private:
+    double length;
+    double width;
+};
+
+int main() {
+    // Create two Rectangle objects
+    Rectangle rect1(5.0, 3.0);
+    Rectangle rect2(2.5, 4.0);
+
+    // Display dimensions and areas of the rectangles
+    std::cout << "Rectangle 1:\n";
+    rect1.display();
+    std::cout << "Area: " << rect1.area() << std::endl;
+
+    std::cout << "\nRectangle 2:\n";
+    rect2.display();
+    std::cout << "Area: " << rect2.area() << std::endl;
+
+    // Add areas of the rectangles using operator overloading
+    Rectangle totalRect = rect1 + rect2;
+
+    // Display dimensions and area of the combined rectangle
+    std::cout << "\nCombined Rectangle:\n";
+    totalRect.display();
+    std::cout << "Area: " << totalRect.area() << std::endl;
+
+    return 0;
+}
