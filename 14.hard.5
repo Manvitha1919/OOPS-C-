@@ -1,0 +1,63 @@
+#include <iostream>
+#include <vector>
+
+class Vector3D {
+private:
+    double x, y, z;
+
+public:
+    Vector3D(double x_val = 0, double y_val = 0, double z_val = 0) : x(x_val), y(y_val), z(z_val) {}
+
+    // Addition operator overloading
+    Vector3D operator+(const Vector3D& vec) const {
+        return Vector3D(x + vec.x, y + vec.y, z + vec.z);
+    }
+
+    // Subtraction operator overloading
+    Vector3D operator-(const Vector3D& vec) const {
+        return Vector3D(x - vec.x, y - vec.y, z - vec.z);
+    }
+
+    // Scalar multiplication operator overloading
+    Vector3D operator*(double scalar) const {
+        return Vector3D(x * scalar, y * scalar, z * scalar);
+    }
+
+    // Cross product operator overloading
+    Vector3D crossProduct(const Vector3D& vec) const {
+        return Vector3D(y * vec.z - z * vec.y, z * vec.x - x * vec.z, x * vec.y - y * vec.x);
+    }
+
+    // Display function
+    void display() const {
+        std::cout << "(" << x << ", " << y << ", " << z << ")" << std::endl;
+    }
+};
+
+int main() {
+    // Example usage
+    Vector3D v1(1, 2, 3);
+    Vector3D v2(4, 5, 6);
+
+    // Addition
+    Vector3D sum = v1 + v2;
+    std::cout << "Addition result: ";
+    sum.display();
+
+    // Subtraction
+    Vector3D diff = v1 - v2;
+    std::cout << "Subtraction result: ";
+    diff.display();
+
+    // Scalar multiplication
+    Vector3D scaled = v1 * 2;
+    std::cout << "Scalar multiplication result: ";
+    scaled.display();
+
+    // Cross product
+    Vector3D cross = v1.crossProduct(v2);
+    std::cout << "Cross product result: ";
+    cross.display();
+
+    return 0;
+}
