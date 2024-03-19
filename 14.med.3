@@ -1,0 +1,27 @@
+#include <iostream>
+
+// Function prototype
+void swap(int &x, int &y);
+
+int main() {
+    int a = 5;
+    int b = 10;
+
+    std::cout << "Before swapping:" << std::endl;
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+
+    // Call swap function
+    swap(a, b);
+
+    std::cout << "After swapping:" << std::endl;
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+
+    return 0;
+}
+
+// Function to swap values using call by reference
+void swap(int &x, int &y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
