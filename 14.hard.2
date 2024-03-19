@@ -1,0 +1,65 @@
+#include <iostream>
+
+class Complex {
+private:
+    double real;
+    double imaginary;
+
+public:
+    // Constructor
+    Complex(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}
+
+    // Friend functions declarations
+    friend Complex operator+(const Complex& c1, const Complex& c2);
+    friend Complex operator-(const Complex& c1, const Complex& c2);
+    friend Complex operator*(const Complex& c1, const Complex& c2);
+    friend Complex operator/(const Complex& c1, const Complex& c2);
+
+    // Function to display complex number
+    void display() const {
+        std::cout << "(" << real << " + " << imaginary << "i)" << std::endl;
+    }
+};
+
+// Friend function definitions
+Complex operator+(const Complex& c1, const Complex& c2) {
+    return Complex(c1.real + c2.real, c1.imaginary + c2.imaginary);
+}
+
+Complex operator-(const Complex& c1, const Complex& c2) {
+    return Complex(c1.real - c2.real, c1.imaginary - c2.imaginary);
+}
+
+Complex operator*(const Complex& c1, const Complex& c2) {
+    double realPart = c1.real * c2.real - c1.imaginary * c2.imaginary;
+    double imagPart = c1.real * c2.imaginary + c1.imaginary * c2.real;
+    return Complex(realPart, imagPart);
+}
+
+Complex operator/(const Complex& c1, const Complex& c2) {
+    double divisor = c2.real * c2.real + c2.imaginary * c2.imaginary;
+    double realPart = (c1.real * c2.real + c1.imaginary * c2.imaginary) / divisor;
+    double imagPart = (c1.imaginary * c2.real - c1.real * c2.imaginary) / divisor;
+    return Complex(realPart, imagPart);
+}
+
+int main() {
+    Complex c1(3.0, 2.0);
+    Complex c2(1.0, 4.0);
+
+    Complex sum = c1 + c2;
+    Complex diff = c1 - c2;
+    Complex prod = c1 * c2;
+    Complex quot = c1 / c2;
+
+    std::cout << "Sum: ";
+    sum.display();
+    std::cout << "Difference: ";
+    diff.display();
+    std::cout << "Product: ";
+    prod.display();
+    std::cout << "Quotient: ";
+    quot.display();
+
+    return 0;
+}
