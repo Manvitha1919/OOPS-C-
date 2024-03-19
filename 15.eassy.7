@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+
+class Person {
+public:
+    // Constructor
+    Person(const std::string& n = "", int a = 0) : name(n), age(a) {}
+
+    // Destructor
+    ~Person() {
+        std::cout << "Goodbye, " << name << "!\n";
+    }
+
+    // Copy constructor
+    Person(const Person& other) : name(other.name), age(other.age) {}
+
+    // Method to display person's information
+    void display() const {
+        std::cout << "Name: " << name << ", Age: " << age << std::endl;
+    }
+
+private:
+    std::string name;
+    int age;
+};
+
+int main() {
+    // Create a Person object
+    Person* person1 = new Person("Alice", 30);
+
+    // Display person1's information
+    std::cout << "Original object:\n";
+    person1->display();
+
+    // Delete person1 object, destructor will be called
+    delete person1;
+
+    // Create a new Person object
+    Person person2("Bob", 25);
+
+    // Display person2's information
+    std::cout << "\nNew object:\n";
+    person2.display();
+
+    return 0;
+}
