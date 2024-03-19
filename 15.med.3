@@ -1,0 +1,37 @@
+#include <iostream>
+
+class Complex {
+private:
+    double real;
+    double imag;
+
+public:
+    // Parameterized constructor
+    Complex(double r, double i) : real(r), imag(i) {}
+
+    // Overloaded addition operator
+    Complex operator+(const Complex& other) const {
+        return Complex(real + other.real, imag + other.imag);
+    }
+
+    // Method to display the complex number
+    void display() const {
+        std::cout << "(" << real << " + " << imag << "i)";
+    }
+};
+
+int main() {
+    // Create two complex numbers
+    Complex c1(2.0, 3.0);
+    Complex c2(1.0, -2.0);
+
+    // Perform addition
+    Complex sum = c1 + c2;
+
+    // Display the result
+    std::cout << "Result of addition: ";
+    sum.display();
+    std::cout << std::endl;
+
+    return 0;
+}
